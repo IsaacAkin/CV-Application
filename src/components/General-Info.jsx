@@ -1,33 +1,25 @@
-import { useState } from "react";
 import '../styles/general-info.css';
+import { Input, Button } from "./utils.jsx";
 
 export default function GeneralInfo() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState(null);
-
-    function handleName() {
-        setName(name);
-    }
-
-    function handleEmail() {
-        setEmail(email);
-    }
-
-    function handlePhoneNumber() {
-        setPhoneNumber(phoneNumber);
-    }
 
     return (
-        <div>
-            <label htmlFor="name">Full Name</label>
-            <input type="text" onChange={handleName}/>
-
-            <label htmlFor="email">Email</label>
-            <input type="text" onChange={handleEmail}/
-            >
-            <label htmlFor="phoneNumber">Phone Number</label>
-            <input type="tel" onChange={handlePhoneNumber}/>
-        </div>
+        <>
+            <h2>General Information</h2>
+            <section className='general-info'>
+                <div className="part-one">
+                    <Input labelName={'First Name'} inputType={'text'} />
+                    <Input labelName={'Last Name'} inputType={'text'} />
+                </div>
+                <div className="part-two">
+                    <Input labelName={'Date of Birth'} inputType={'date'}/>
+                    <Input labelName={'Phone Number'} inputType={'tel'}/>
+                </div>
+                <div className="buttons-container">
+                    <Button name={'edit'} type='button'/>
+                    <Button name={'submit'}/>
+                </div>
+            </section>
+        </>
     )
 }
