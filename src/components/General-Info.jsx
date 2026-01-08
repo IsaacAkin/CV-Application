@@ -1,4 +1,4 @@
-import '../styles/general-info.css';
+import '../styles/utils.css';
 import { Input, Button } from "./utils.jsx";
 
 export default function GeneralInfo() {
