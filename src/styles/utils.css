@@ -1,0 +1,38 @@
+.general-info>div>div,
+.education>div>div,
+.experience>div>div {
+    display: flex;
+    flex-direction: column;
+}
+
+.general-info>div>div>input,
+.education>div>div>input,
+.experience>div>div>input {
+    width: 200px;
+    height: 23px;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+}
+
+.part-one {
+    display: flex;
+    justify-content: space-around;
+}
+
+.part-two {
+    display: flex;
+    justify-content: space-around;
+}
+
+.part-three {
+    display: block;
+}
+
+.buttons-container {
+    padding-top: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
