@@ -16,8 +16,8 @@ export default function Education() {
                     <Input labelName={'Study to'} inputType={'date'} />
                 </div>
                 <div className="buttons-container">
-                    <Button name={'Add Section'} type={'button'} />
-                    <Button name={'Edit'} type={'button'} />
+                    <Button name={'Add Section'} />
+                    <Button name={'Edit'} />
                     <Button name={'Submit'} />
                 </div>
             </section>

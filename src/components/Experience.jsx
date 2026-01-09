@@ -17,10 +17,11 @@ export default function Experience() {
                 </div>
                 <div className="part-three">
                     <Input labelName={'Main Responsibilities'} inputType={'text'}/>
+                    <Button name={'Add Point'} />
                 </div>
                 <div className="buttons-container">
-                    <Button name={'Add Section'} type={'button'} />
-                    <Button name={'Edit'} type={'button'} />
+                    <Button name={'Add Section'} />
+                    <Button name={'Edit'} />
                     <Button name={'Submit'} />
                 </div>
             </section>

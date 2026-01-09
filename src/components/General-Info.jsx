@@ -16,8 +16,8 @@ export default function GeneralInfo() {
                     <Input labelName={'Phone Number'} inputType={'tel'}/>
                 </div>
                 <div className="buttons-container">
-                    <Button name={'edit'} type='button'/>
-                    <Button name={'submit'}/>
+                    <Button name={'edit'} />
+                    <Button name={'submit'} />
                 </div>
             </section>
         </>
