@@ -7,7 +7,7 @@ export function Input({ labelName, inputType }) {
     );
 }
 
-export function Button({ name, type = 'submit' }) {
+export function Button({ name, type = 'button' }) {
     return (
         <>
             <button type={type}>{name}</button>
