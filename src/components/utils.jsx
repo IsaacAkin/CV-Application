@@ -1,8 +1,8 @@
-export function Input({ labelName, inputType }) {
+export function Input({ labelName, inputType, value, onChange }) {
     return (
         <div>
             <label htmlFor={labelName}>{labelName}</label>
-            <input type={inputType} name={labelName} id={labelName}/>
+            <input type={inputType} value={value} onChange={onChange} name={labelName} id={labelName}/>
         </div>
     );
 }
