@@ -1,8 +1,12 @@
-export function Input({ labelName, inputType, onChange }) {
+export function Input({ labelName, inputType, onChange, format, isDisabled}) {
     return (
         <div>
             <label htmlFor={labelName}>{labelName}</label>
-            <input type={inputType} onChange={onChange} name={labelName} id={labelName}/>
+            {
+                !isDisabled
+                ? <input type={inputType} onChange={onChange} format={format} name={labelName} id={labelName} />
+                : <input type={inputType} onChange={onChange} format={format} name={labelName} id={labelName} disabled />
+            }
         </div>
     );
 }
