@@ -1,42 +1,99 @@
-import '../styles/utils.css';
+import '../styles/components.css';
+import { useState, useRef, Fragment } from "react";
 import GeneralInfo from './General-Info.jsx';
 import Profile from './Profile.jsx';
 import Education from './Education.jsx';
 import Experience from './Experience.jsx';
+import { Button } from "./utils.jsx";
 
 export default function Resume() {
+    const educationIndex = useRef(1);
+    const experienceIndex = useRef(1);
+
+    // const [disabled, setDisabled] = useState(false);
+    const [educationSection, setEducationSection] = useState([{ id: 1 }]);
+    const [experienceSection, setExperienceSection] = useState([{ id: 1 }]);
+
+    // function handleDisabled() {
+    //     if (disabled) {
+    //         setDisabled(false);
+    //     } else {
+    //         setDisabled(true)
+    //     }
+    // }
+
+    function addEducationSection() {
+        educationIndex.current++;
+        setEducationSection(previous => ([...previous, { id: educationIndex.current }]));
+    }
+
+    function removeEducationSection(id) {
+        setEducationSection(previous => {
+            if (previous.length === 1) return previous;
+            return previous.filter(sections => sections.id !== id);
+        });
+    }
+    
+    function addExperienceSection() {
+        experienceIndex.current++;
+        setExperienceSection(previous => ([...previous, { id: experienceIndex.current }]));
+    }
+
+    function removeExperienceSection(id) {
+        setExperienceSection(previous => {
+            if (previous.length === 1) return previous;
+            return previous.filter(sections => sections.id !== id);
+        });
+    }
+
     return (
         <>
             <section className="general-info-section">
                 <GeneralInfo
-                    fullName={'Isaac Akinsanya'}
-                    email={'isaacaki247@gmail.com'}
-                    phoneNumber={'07507674089'}
+                    // isDisabled={disabled}
                 />
+                {/* <Button onClick={handleDisabled} disabled={disabled}/> */}
             </section>
             <section className="profile-section">
                 <h3>Profile</h3>
                 <Profile
-                description={'This is a placeholder descriprion.'}
+                    // isDisabled={disabled}
                 />
+                {/* <Button onClick={handleDisabled} disabled={disabled}/> */}
             </section>
             <section className="education-section">
                 <h3>Education</h3>
-                <Education
-                    institutionName={'University of Portsmouth'}
-                    degreeTitle={'Bsc(hons) Computer Science'}
-                    startDate={'2021-09-16'}
-                    endDate={'2024-06-21'}
-                />
+                {
+                    educationSection.map(section => {
+                        return (
+                            <Fragment key={section.id}>
+                                <Education
+                                    id={section.id}
+                                    onDelete={removeEducationSection}
+                                />
+                            </Fragment>
+                        )
+                    })
+                }
+                <button onClick={addEducationSection}>+</button>
+                {/* <Button onClick={handleDisabled} disabled={disabled}/> */}
             </section>
             <section className="experience-section">
                 <h3>Experience</h3>
-                <Experience
-                    positionTitle={'Junior Software Engineer'}
-                    companyName={'Interact Software'}
-                    startDate={'2025-09-01'}
-                    endDate={'2026-04-23'}
-                />
+                {
+                    experienceSection.map(section => {
+                        return (
+                            <Fragment key={section.id}>
+                                <Experience 
+                                    id={section.id}
+                                    onDelete={removeExperienceSection}
+                                />
+                            </Fragment>
+                        )
+                    })
+                }
+                <button onClick={addExperienceSection}>+</button>
+                {/* <Button onClick={handleDisabled} disabled={disabled}/> */}
             </section>
         </>
     )

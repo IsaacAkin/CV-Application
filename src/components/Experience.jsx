@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Input, ListItem, Achievements } from "./utils.jsx";
 
-export default function Experience({ isDisabled }) {
+export default function Experience({ isDisabled, id, onDelete }) {
     const [positionTitle, setPositionTitle] = useState('');
     const [companyName, setCompanyName] = useState('');
     const [startDate, setStartDate] = useState('');
@@ -50,6 +50,7 @@ export default function Experience({ isDisabled }) {
             {/* <Achievements>
                 <ListItem item={'Completed a project'}/>
             </Achievements> */}
+            <button onClick={() => onDelete(id)}>-</button>
         </div>
     )
 }

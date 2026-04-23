@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Input, ListItem, Achievements } from "./utils.jsx";
 
-export default function Education({ isDisabled }) {
+export default function Education({ isDisabled, id, onDelete }) {
     const [institutionName, setInstitutionName] = useState('');
     const [degreeTitle, setDegreeTitle] = useState('');
     const [startDate, setStartDate] = useState('');
@@ -50,6 +50,7 @@ export default function Education({ isDisabled }) {
             {/* <Achievements>
                 <ListItem/>
             </Achievements> */}
+            <button onClick={() => onDelete(id)}>-</button>
         </div>
     )
 }
