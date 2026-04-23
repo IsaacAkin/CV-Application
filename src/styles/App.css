@@ -1,0 +1,27 @@
+#root {
+  /* border: 1px solid white; */
+}
+
+.app {
+  border: 1px solid white;
+  /* background-color: white; */
+  /* color: black; */
+  padding: 10px;
+  margin: 0 auto;
+  width: 210mm;
+  /* height: 297mm; */
+}
+
+/* input,
+textarea {
+  background-color: white;
+  color: black;
+} */
+
+
+/* @media (max-width: 1050px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+} */
