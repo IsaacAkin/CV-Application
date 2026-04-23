@@ -1,20 +1,39 @@
-import '../styles/utils.css';
-// import { useState } from 'react';
-import { ListItem, Achievements } from "./utils.jsx";
+import { useState } from 'react';
+import { Input, ListItem, Achievements } from "./utils.jsx";
 
-export default function Experience({ positionTitle, companyName, startDate, endDate}) {
+export default function Experience({ isDisabled }) {
+    const [positionTitle, setPositionTitle] = useState('');
+    const [companyName, setCompanyName] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+
+    function handlePositionTitle(e) {
+        setPositionTitle(e.target.value);
+    }
+    function handleCompanyName(e) {
+        setCompanyName(e.target.value);
+    }
+    
+    function handleStartDate(e) {
+        setStartDate(e.target.value);
+    }
+    
+    function handleEndDate(e) {
+        setEndDate(e.target.value);
+    }
+
     return (
         <div>
             <div className="company-info">
                 <div className="company">
-                    <input type="text" name="" id="" value={positionTitle} />
+                    <Input type={'text'} value={positionTitle} onChange={handlePositionTitle} placeholder={'Position Title'} isDisabled={isDisabled} />
                     <span>, </span>
-                    <input type="text" name="" id="" value={companyName} />
+                    <Input type={'text'} value={companyName} onChange={handleCompanyName} placeholder={'Company Name'} isDisabled={isDisabled} />
                 </div>
                 <div className="dates">
-                    <input type="date" name="" id="" value={startDate} />
+                    <Input type={'date'} value={startDate} onChange={handleStartDate} isDisabled={isDisabled} />
                     <span> - </span>
-                    <input type="date" name="" id="" value={endDate} />
+                    <Input type={'date'} value={endDate} onChange={handleEndDate} isDisabled={isDisabled} />
                 </div>
             </div>
             <ul className="achievements">
