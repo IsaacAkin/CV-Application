@@ -1,34 +1,36 @@
 import '../styles/utils.css';
-import { useState } from "react";
-import { Input, Button } from "./utils.jsx";
+// import { useState } from "react";
+import { ListItem, Achievements } from "./utils.jsx";
 
-export default function Education({ handleSchoolName, handleDegreeTitle, handleStartOfStudy, handleEndOfStudy}) {
-    const [disabled, setDisabled] = useState(false);
-
-    const handleDisabled = () => {
-        if (!disabled) {
-            setDisabled(true);
-        } else {
-            setDisabled(false);
-        }
-    }
-
+export default function Education({ institutionName, degreeTitle, startDate, endDate }) {
     return (
-        <>
-            <h2>Education</h2>
-            <section className='education'>
-                <div className="part-one">
-                    <Input labelName={'School Name'} inputType={'text'} onChange={handleSchoolName} isDisabled={disabled} />
-                    <Input labelName={'Degree Title'} inputType={'text'} onChange={handleDegreeTitle} isDisabled={disabled} />
+        <div>
+            <div className="school-info">
+                <div className="institution">
+                    <input type="text" name="" id="" value={institutionName} />
+                    {degreeTitle && <span>, </span> }
+                    <input type="text" name="" id="" value={degreeTitle} />
                 </div>
-                <div className="part-two">
-                    <Input labelName={'Study from'} inputType={'date'} format={'dd-MM-yyyy'} onChange={handleStartOfStudy} isDisabled={disabled} />
-                    <Input labelName={'Study to'} inputType={'date'} format={'dd-MM-yyyy'} onChange={handleEndOfStudy} isDisabled={disabled} />
+                <div className="dates">
+                    <input type="date" name="" id="" value={startDate} />
+                    <span> - </span>
+                    <input type="date" name="" id="" value={endDate} />
                 </div>
-                <div className="buttons-container">
-                    <Button name={disabled ? 'Edit' : 'Submit'} onClick={handleDisabled} />
-                </div>
-            </section>
-        </>
+            </div>
+            <ul className="achievements">
+                <li>Got a degree</li>
+                <li>Comleted a group project</li>
+            </ul>
+            {/* <ul className='achievements'>
+                {
+                    achievements.map((achievement) => {
+                        <li key={achievement}>{achievement}</li>
+                    })
+                }
+            </ul> */}
+            {/* <Achievements>
+                <ListItem item={'Obtained a degree'}/>
+            </Achievements> */}
+        </div>
     )
 }
