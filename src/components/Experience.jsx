@@ -1,29 +1,36 @@
 import '../styles/utils.css';
-import { Input, Button } from "./utils.jsx";
+// import { useState } from 'react';
+import { ListItem, Achievements } from "./utils.jsx";
 
-export default function Experience({ handleCompanyName, handlePositionTitle, handleEmploymentStartDate, handleEmploymentEndDate, handleResponsibilities }) {
+export default function Experience({ positionTitle, companyName, startDate, endDate}) {
     return (
-        <>
-            <h2>Experience</h2>
-            <section className='experience'>
-                <div className="part-one">
-                    <Input labelName={'Company Name'} inputType={'text'} onChange={handleCompanyName} />
-                    <Input labelName={'Position Title'} inputType={'text'} onChange={handlePositionTitle} />
+        <div>
+            <div className="company-info">
+                <div className="company">
+                    <input type="text" name="" id="" value={positionTitle} />
+                    <span>, </span>
+                    <input type="text" name="" id="" value={companyName} />
                 </div>
-                <div className="part-two">
-                    <Input labelName={'Employed from'} inputType={'date'} onChange={handleEmploymentStartDate} />
-                    <Input labelName={'Employed to'} inputType={'date'} onChange={handleEmploymentEndDate} />
+                <div className="dates">
+                    <input type="date" name="" id="" value={startDate} />
+                    <span> - </span>
+                    <input type="date" name="" id="" value={endDate} />
                 </div>
-                <div className="part-three">
-                    <Input labelName={'Main Responsibilities'} inputType={'text'} onChange={handleResponsibilities} />
-                    <Button name={'Add Point'} />
-                </div>
-                <div className="buttons-container">
-                    <Button name={'Add Section'} />
-                    <Button name={'Edit'} />
-                    <Button name={'Submit'} />
-                </div>
-            </section>
-        </>
+            </div>
+            <ul className="achievements">
+                <li>Led a project</li>
+                <li>Got promoted to tech lead</li>
+            </ul>
+            {/* <ul className='achievements'>
+                {
+                    responsibilities.map((responsibility) => {
+                        <li key={responsibility}>{responsibility}</li>
+                    })
+                }
+            </ul> */}
+            {/* <Achievements>
+                <ListItem item={'Completed a project'}/>
+            </Achievements> */}
+        </div>
     )
 }
