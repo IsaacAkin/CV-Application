@@ -1,16 +1,12 @@
-// import { useState } from 'react'
-import GeneralInfo from './components/General-Info.jsx';
-import './App.css'
+// import { useState } from 'react';
+import './styles/App.css';
+import Resume from './components/Resume';
 
 function App() {
-
   return (
-    <>
-      <h1>CV Builder</h1>
-      <div className="">
-        <GeneralInfo />
-      </div>
-    </>
+    <div className="app">
+      <Resume />
+    </div>
   )
 }
 
