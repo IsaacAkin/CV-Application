@@ -1,18 +1,33 @@
-import '../styles/utils.css';
-// import { useState } from "react";
-// import { Input, Button } from "./utils.jsx";
+import { useState } from "react";
+import { Input } from "./utils.jsx";
 
-export default function GeneralInfo({ fullName, email, phoneNumber }) {
+export default function GeneralInfo({ isDisabled }) {
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState(null);
+
+    function handleFullName(e) {
+        setFullName(e.target.value);
+    }
+    
+    function handleEmail(e) {
+        setEmail(e.target.value);
+    }
+    
+    function handlePhoneNumber(e) {
+        setPhoneNumber(e.target.value);
+    }
+
     return (
         <>
-            <h1>{fullName}</h1>
+            <Input type={'text'} value={fullName} onChange={handleFullName} placeholder={'Full Name'} isDisabled={isDisabled} />
             <div>
                 <div>
-                    <input type="text" name="" id="" value={email} />
+                    <Input type={'text'} value={email} onChange={handleEmail} placeholder={'Email'} isDisabled={isDisabled} />
                 </div>
                 <span> | </span>
                 <div>
-                    <input type="number" name="" id="" value={phoneNumber} />
+                    <Input type={'number'} value={phoneNumber} onChange={handlePhoneNumber} placeholder={'Phone Number'} isDisabled={isDisabled} />
                 </div>
             </div>
         </>
