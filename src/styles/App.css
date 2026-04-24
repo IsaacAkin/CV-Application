@@ -15,9 +15,8 @@ textarea {
 } */
 
 
-/* @media (max-width: 1050px) {
-  .container {
-    display: flex;
-    flex-direction: column;
+@media (max-width: 1050px) {
+  .app {
+    width: auto;
   }
-} */
+}

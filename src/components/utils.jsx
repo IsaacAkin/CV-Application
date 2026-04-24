@@ -32,7 +32,7 @@ export function TextArea({ description, onChange, placeholder, isSubmitted }) {
                 ?
                 <>
                     <div>
-                        <textarea name="description" id="description" cols={105} onChange={onChange} 
+                        <textarea name="description" id="description" cols={105} rows={4} onChange={onChange} 
                         placeholder={placeholder}>
                             {description}
                         </textarea>
