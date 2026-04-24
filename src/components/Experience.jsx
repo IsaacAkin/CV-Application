@@ -6,7 +6,7 @@ export default function Experience({ id, onDelete }) {
     const [companyName, setCompanyName] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-    const [disabled, setDisabled] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
 
     function handlePositionTitle(e) {
         setPositionTitle(e.target.value);
@@ -23,11 +23,11 @@ export default function Experience({ id, onDelete }) {
         setEndDate(e.target.value);
     }
 
-    function handleDisabled() {
-        if (disabled) {
-            setDisabled(false);
+    function handleSubmitted() {
+        if (submitted) {
+            setSubmitted(false);
         } else {
-            setDisabled(true)
+            setSubmitted(true)
         }
     }
 
@@ -35,24 +35,24 @@ export default function Experience({ id, onDelete }) {
         <div>
             <div className="company-info">
                 <div className="company">
-                    <Input type={'text'} value={positionTitle} onChange={handlePositionTitle} placeholder={'Position Title'} isDisabled={disabled} />
+                    <Input type={'text'} value={positionTitle} onChange={handlePositionTitle} placeholder={'Position Title'} isSubmitted={submitted} />
                     <span>, </span>
-                    <Input type={'text'} value={companyName} onChange={handleCompanyName} placeholder={'Company Name'} isDisabled={disabled} />
+                    <Input type={'text'} value={companyName} onChange={handleCompanyName} placeholder={'Company Name'} isSubmitted={submitted} />
                 </div>
                 <div className="dates">
-                    <Input type={'date'} value={startDate} onChange={handleStartDate} isDisabled={disabled} />
+                    <Input type={'date'} value={startDate} onChange={handleStartDate} isSubmitted={submitted} />
                     <span> - </span>
-                    <Input type={'date'} value={endDate} onChange={handleEndDate} isDisabled={disabled} />
+                    <Input type={'date'} value={endDate} onChange={handleEndDate} isSubmitted={submitted} />
                 </div>
             </div>
             <div className="list-container">
                 <Achievements
                     placeholder={'Accomplishments on the job'}
-                    isDisabled={disabled}
+                    isSubmitted={submitted}
                 />
             </div>
             <button onClick={() => onDelete(id)}>Remove section</button>
-            <Button onClick={handleDisabled} disabled={disabled}/>
+            <Button onClick={handleSubmitted} isSubmitted={submitted}/>
         </div>
         
     )

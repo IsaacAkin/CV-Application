@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Input, Button } from "./utils.jsx";
+import { NameInput, Input, Button } from "./utils.jsx";
 
 export default function GeneralInfo() {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState(null);
-    const [disabled, setDisabled] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
 
     function handleFullName(e) {
         setFullName(e.target.value);
@@ -19,27 +19,27 @@ export default function GeneralInfo() {
         setPhoneNumber(e.target.value);
     }
 
-    function handleDisabled() {
-        if (disabled) {
-            setDisabled(false);
+    function handleSubmitted() {
+        if (submitted) {
+            setSubmitted(false);
         } else {
-            setDisabled(true)
+            setSubmitted(true)
         }
     }
 
     return (
         <>
-            <Input type={'text'} value={fullName} onChange={handleFullName} placeholder={'Full Name'} isDisabled={disabled} />
+            <NameInput type={'text'} value={fullName} onChange={handleFullName} placeholder={'Full Name'} isSubmitted={submitted} />
             <div>
                 <div>
-                    <Input type={'text'} value={email} onChange={handleEmail} placeholder={'Email'} isDisabled={disabled} />
+                    <Input type={'text'} value={email} onChange={handleEmail} placeholder={'Email'} isSubmitted={submitted} />
                 </div>
                 <span> | </span>
                 <div>
-                    <Input type={'number'} value={phoneNumber} onChange={handlePhoneNumber} placeholder={'Phone Number'} isDisabled={disabled} />
+                    <Input type={'number'} value={phoneNumber} onChange={handlePhoneNumber} placeholder={'Phone Number'} isSubmitted={submitted} />
                 </div>
             </div>
-            <Button onClick={handleDisabled} disabled={disabled}/>
+            <Button onClick={handleSubmitted} isSubmitted={submitted}/>
         </>
     )
 }

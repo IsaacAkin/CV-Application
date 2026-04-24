@@ -1,22 +1,34 @@
 import { useState, useRef, Fragment } from "react";
 
-export function Input({ type, value, onChange, placeholder, isDisabled }) {
+export function Input({ type, value, onChange, placeholder, isSubmitted }) {
     return(
         <>
             {
-                isDisabled
-                ? <input type={type} value={value} onChange={onChange} placeholder={placeholder} disabled />
+                isSubmitted
+                ? <p>{value}</p>
                 : <input type={type} value={value} onChange={onChange} placeholder={placeholder} />
             }
         </>
     )
 }
 
-export function TextArea({ description, onChange, placeholder, isDisabled }) {
+export function NameInput({ type, value, onChange, placeholder, isSubmitted }) {
+    return(
+            <>
+                {
+                    isSubmitted
+                    ? <h2>{value}</h2>
+                    : <input type={type} value={value} onChange={onChange} placeholder={placeholder} />
+                }
+            </>
+        )
+}
+
+export function TextArea({ description, onChange, placeholder, isSubmitted }) {
     return(
         <>
             {
-                !isDisabled
+                !isSubmitted
                 ?
                 <>
                     <div>
@@ -29,11 +41,7 @@ export function TextArea({ description, onChange, placeholder, isDisabled }) {
                 :
                 <>
                     <div>
-                        <textarea name="description" id="description" cols={105} onChange={onChange} 
-                        placeholder={placeholder}
-                        disabled>
-                            {description}
-                        </textarea>
+                        <p>{description}</p>
                     </div>
                 </>
             }
@@ -41,11 +49,11 @@ export function TextArea({ description, onChange, placeholder, isDisabled }) {
     )
 }
 
-export function Button({ onClick, disabled }) {
+export function Button({ onClick, isSubmitted }) {
     return(
         <>
             {
-                disabled
+                isSubmitted
                 ? <button onClick={onClick}>Edit</button>
                 : <button onClick={onClick}>Submit</button>
             }
@@ -53,11 +61,11 @@ export function Button({ onClick, disabled }) {
     )
 }
 
-function Item({ onChange, onClick, placeholder, isDisabled }) {
+function Item({ onChange, onClick, placeholder, isSubmitted }) {
     return(
         <>
             { 
-                !isDisabled &&
+                !isSubmitted &&
                 <>
                     <input type="text" onChange={onChange} placeholder={placeholder} />
                     <button onClick={onClick}>Add Item</button>
@@ -67,7 +75,7 @@ function Item({ onChange, onClick, placeholder, isDisabled }) {
     )
 }
 
-function List({ list, onClick, isDisabled }) {
+function List({ list, onClick, isSubmitted }) {
     return(
         <ul className='achievements'>
             {
@@ -75,7 +83,7 @@ function List({ list, onClick, isDisabled }) {
                     return(
                         <Fragment key={item.id}>
                             <li>{item.value}</li>
-                            {!isDisabled && <button onClick={() => onClick(item.id)}>remove</button>}
+                            {!isSubmitted && <button onClick={() => onClick(item.id)}>remove</button>}
                         </Fragment>
                     )
                 })
@@ -84,7 +92,7 @@ function List({ list, onClick, isDisabled }) {
     )
 }
 
-export function Achievements({ placeholder, isDisabled }) {
+export function Achievements({ placeholder, isSubmitted }) {
     const nextIndex = useRef(1);
     const [item, setItem] = useState('');
     const [achievements, setAchievements] = useState([]);
@@ -111,12 +119,12 @@ export function Achievements({ placeholder, isDisabled }) {
                 onChange={handleItem}
                 onClick={addAchievements}
                 placeholder={placeholder}
-                isDisabled={isDisabled}
+                isSubmitted={isSubmitted}
             />
             <List
                 list={achievements}
                 onClick={removeAchievements}
-                isDisabled={isDisabled}
+                isSubmitted={isSubmitted}
             />
         </>
     )

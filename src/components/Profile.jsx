@@ -3,17 +3,17 @@ import { TextArea, Button } from "./utils.jsx";
 
 export default function Profile() {
     const [description, setDescription] = useState('');
-    const [disabled, setDisabled] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
 
     function handleDescription(e) {
         setDescription(e.target.value);
     }
 
-    function handleDisabled() {
-        if (disabled) {
-            setDisabled(false);
+    function handleSubmitted() {
+        if (submitted) {
+            setSubmitted(false);
         } else {
-            setDisabled(true)
+            setSubmitted(true)
         }
     }
 
@@ -23,9 +23,9 @@ export default function Profile() {
                 description={description}
                 onChange={handleDescription}
                 placeholder={'Enter a short summary about who you are and what you can bring to the table'}
-                isDisabled={disabled}
+                isSubmitted={submitted}
             />
-            <Button onClick={handleDisabled} disabled={disabled}/>
+            <Button onClick={handleSubmitted} isSubmitted={submitted}/>
         </>
     )
 }
