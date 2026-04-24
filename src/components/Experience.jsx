@@ -36,12 +36,12 @@ export default function Experience({ id, onDelete }) {
             <div className="company-info">
                 <div className="company">
                     <Input type={'text'} value={positionTitle} onChange={handlePositionTitle} placeholder={'Position Title'} isSubmitted={submitted} />
-                    <span>, </span>
+                    {positionTitle && <span>, </span>}
                     <Input type={'text'} value={companyName} onChange={handleCompanyName} placeholder={'Company Name'} isSubmitted={submitted} />
                 </div>
                 <div className="dates">
                     <Input type={'date'} value={startDate} onChange={handleStartDate} isSubmitted={submitted} />
-                    <span> - </span>
+                    {startDate && endDate && <span> - </span>}
                     <Input type={'date'} value={endDate} onChange={handleEndDate} isSubmitted={submitted} />
                 </div>
             </div>
@@ -51,7 +51,7 @@ export default function Experience({ id, onDelete }) {
                     isSubmitted={submitted}
                 />
             </div>
-            <button onClick={() => onDelete(id)}>Remove section</button>
+            <button onClick={() => onDelete(id)} style={{ backgroundColor: 'lightcoral' }}>Remove section</button>
             <Button onClick={handleSubmitted} isSubmitted={submitted}/>
         </div>
         
