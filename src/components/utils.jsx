@@ -54,8 +54,8 @@ export function Button({ onClick, isSubmitted }) {
         <>
             {
                 isSubmitted
-                ? <button onClick={onClick}>Edit</button>
-                : <button onClick={onClick}>Submit</button>
+                ? <button onClick={onClick} style={{ backgroundColor: 'lightblue' }}>Edit</button>
+                : <button onClick={onClick} style={{ backgroundColor: 'lightgreen' }}>Submit</button>
             }
         </>
     )
@@ -68,7 +68,7 @@ function Item({ onChange, onClick, placeholder, isSubmitted }) {
                 !isSubmitted &&
                 <>
                     <input type="text" onChange={onChange} placeholder={placeholder} />
-                    <button onClick={onClick}>Add Item</button>
+                    <button onClick={onClick} style={{ backgroundColor: 'lightgreen' }}>Add Item</button>
                 </>
             }
         </>
@@ -83,7 +83,7 @@ function List({ list, onClick, isSubmitted }) {
                     return(
                         <Fragment key={item.id}>
                             <li>{item.value}</li>
-                            {!isSubmitted && <button onClick={() => onClick(item.id)}>remove</button>}
+                            {!isSubmitted && <button onClick={() => onClick(item.id)} style={{ backgroundColor: 'lightpink' }}>remove</button>}
                         </Fragment>
                     )
                 })

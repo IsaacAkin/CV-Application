@@ -51,7 +51,7 @@ export default function Education({ id, onDelete }) {
                     isSubmitted={submitted}
                 />
             </div>
-            <button onClick={() => onDelete(id)}>Remove section</button>
+            <button onClick={() => onDelete(id)} style={{ backgroundColor: 'lightcoral' }}>Remove section</button>
             <Button onClick={handleSubmitted} isSubmitted={submitted}/>
         </div>
     )
