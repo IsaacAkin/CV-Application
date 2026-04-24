@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TextArea } from "./utils.jsx";
 
 export default function Profile() {
     const [description, setDescription] = useState('');
@@ -8,10 +9,12 @@ export default function Profile() {
     }
 
     return (
-        <div>
-            <textarea name="description" id="description" cols={105} onChange={handleDescription} placeholder='Enter a short summary about who you are and what you can bring to the table'>
-                {description}
-            </textarea>
-        </div>
+        <>
+            <TextArea
+                description={description}
+                onChange={handleDescription}
+                placeholder={'Enter a short summary about who you are and what you can bring to the table'}
+            />
+        </>
     )
 }

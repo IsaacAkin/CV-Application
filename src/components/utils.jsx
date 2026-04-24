@@ -12,6 +12,35 @@ export function Input({ type, value, onChange, placeholder, isDisabled }) {
     )
 }
 
+export function TextArea({ description, onChange, placeholder, isDisabled }) {
+    return(
+        <>
+            {
+                !isDisabled
+                ?
+                <>
+                    <div>
+                        <textarea name="description" id="description" cols={105} onChange={onChange} 
+                        placeholder={placeholder}>
+                            {description}
+                        </textarea>
+                    </div>
+                </>
+                :
+                <>
+                    <div>
+                        <textarea name="description" id="description" cols={105} onChange={onChange} 
+                        placeholder={placeholder}
+                        disabled>
+                            {description}
+                        </textarea>
+                    </div>
+                </>
+            }
+        </>
+    )
+}
+
 export function Button({ onClick, disabled }) {
     return(
         <>
