@@ -1,3 +1,5 @@
+import { useState, useRef, Fragment } from "react";
+
 export function Input({ type, value, onChange, placeholder, isDisabled }) {
     return(
         <>
@@ -22,16 +24,70 @@ export function Button({ onClick, disabled }) {
     )
 }
 
-export function ListItem({ value, onChange }) {
+function Item({ onChange, onClick, placeholder, isDisabled }) {
     return(
-        <input type="text" value={value} onChange={(e) => onChange(e.target.value)} />
+        <>
+            { 
+                !isDisabled &&
+                <>
+                    <input type="text" onChange={onChange} placeholder={placeholder} />
+                    <button onClick={onClick}>Add Item</button>
+                </>
+            }
+        </>
     )
 }
 
-export function Achievements({ list }) {
+function List({ list, onClick }) {
     return(
         <ul className='achievements'>
-            {list}
+            {
+                list.map(item => {
+                    return(
+                        <Fragment key={item.id}>
+                            <li>{item.value}</li>
+                            <button onClick={() => onClick(item.id)}>remove</button>
+                        </Fragment>
+                    )
+                })
+            }
         </ul>
+    )
+}
+
+export function Achievements({ placeholder, isDisabled }) {
+    const nextIndex = useRef(1);
+    const [item, setItem] = useState('');
+    const [achievements, setAchievements] = useState([]);
+
+    function handleItem(e) {
+        setItem(e.target.value)
+    }
+
+    function addAchievements() {
+        nextIndex.current++;
+        setAchievements(previous => ([ ...previous, { id: nextIndex.current, value: item }]));
+        setItem('');
+    }
+
+    function removeAchievements(id) {
+        setAchievements(previous => {
+            return previous.filter(items => items.id !== id);
+        })
+    }
+
+    return(
+        <>
+            <Item
+                onChange={handleItem}
+                onClick={addAchievements}
+                placeholder={placeholder}
+                isDisabled={isDisabled}
+            />
+            <List
+                list={achievements}
+                onClick={removeAchievements}
+            />
+        </>
     )
 }
