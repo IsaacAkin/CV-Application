@@ -34,7 +34,7 @@ export default function GeneralInfo() {
                 <div>
                     <Input type={'text'} value={email} onChange={handleEmail} placeholder={'Email'} isSubmitted={submitted} />
                 </div>
-                <span> | </span>
+                { email && phoneNumber ? <span> | </span> : null }
                 <div>
                     <Input type={'number'} value={phoneNumber} onChange={handlePhoneNumber} placeholder={'Phone Number'} isSubmitted={submitted} />
                 </div>

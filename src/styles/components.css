@@ -1,32 +1,51 @@
+:root {
+    --font-color: #242424;
+    --light-grey: rgba(255, 255, 255, 0.87);
+    --white: #ffffff;
+}
+
 h3 {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #242424;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    border-radius: 4px;
+    border: 2px solid black;
 }
 
 /* GENERAL INFORMATION SECTION */
 .general-info-section {
-    /* border: 2px solid yellow; */
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
-}
-
-.general-info-section>input {
-    /* border: 1px solid green; */
-    justify-self: center;
-    text-align: center;
+    justify-content: center;
 }
 
 .general-info-section>div {
     /* border: 1px solid red; */
     display: flex;
-    justify-content: center;
     gap: 10px;
-    align-items: center;
 }
 
-.general-info-section>div>div {
-    /* border: 1px solid blue; */
+.general-info-section input {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.general-info-section>button {
+    align-self: flex-start;
+}
+
+h2 {
+    /* border: 2px solid black; */
+    font-size: xx-large;
+    text-align: center;
 }
 
 /* PROFILE SECTION */
