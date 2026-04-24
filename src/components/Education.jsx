@@ -36,12 +36,12 @@ export default function Education({ id, onDelete }) {
             <div className="school-info">
                 <div className="institution">
                     <Input type={'text'} value={institutionName} onChange={handleInstitutionName} placeholder={'Institution Name'} isSubmitted={submitted} />
-                    {degreeTitle && <span>, </span> }
+                    {degreeTitle && <span>, </span>}
                     <Input type={'text'} value={degreeTitle} onChange={handleDegreeTitle} placeholder={'Degree Title (Optional)'} isSubmitted={submitted} />
                 </div>
                 <div className="dates">
                     <Input type={'date'} value={startDate} onChange={handleStartDate} isSubmitted={submitted} />
-                    <span> - </span>
+                    {startDate && endDate && <span> - </span>}
                     <Input type={'date'} value={endDate} onChange={handleEndDate} isSubmitted={submitted} />
                 </div>
             </div>
