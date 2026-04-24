@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Input, ListItem, Achievements } from "./utils.jsx";
+import { Input, Achievements } from "./utils.jsx";
 
 export default function Experience({ isDisabled, id, onDelete }) {
     const [positionTitle, setPositionTitle] = useState('');
@@ -36,21 +36,13 @@ export default function Experience({ isDisabled, id, onDelete }) {
                     <Input type={'date'} value={endDate} onChange={handleEndDate} isDisabled={isDisabled} />
                 </div>
             </div>
-            <ul className="achievements">
-                <li>Led a project</li>
-                <li>Got promoted to tech lead</li>
-            </ul>
-            {/* <ul className='achievements'>
-                {
-                    responsibilities.map((responsibility) => {
-                        <li key={responsibility}>{responsibility}</li>
-                    })
-                }
-            </ul> */}
-            {/* <Achievements>
-                <ListItem item={'Completed a project'}/>
-            </Achievements> */}
-            <button onClick={() => onDelete(id)}>-</button>
+            <div className="list-container">
+                <Achievements
+                    placeholder={'Accomplishments on the job'}
+                    isDisabled={false}
+                />
+            </div>
+            <button onClick={() => onDelete(id)}>Remove section</button>
         </div>
     )
 }

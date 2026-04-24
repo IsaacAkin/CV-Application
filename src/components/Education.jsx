@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input, ListItem, Achievements } from "./utils.jsx";
+import { Input, Achievements } from "./utils.jsx";
 
 export default function Education({ isDisabled, id, onDelete }) {
     const [institutionName, setInstitutionName] = useState('');
@@ -36,21 +36,13 @@ export default function Education({ isDisabled, id, onDelete }) {
                     <Input type={'date'} value={endDate} onChange={handleEndDate} isDisabled={isDisabled} />
                 </div>
             </div>
-            {/* <ul className="achievements">
-                <li>Got a degree</li>
-                <li>Comleted a group project</li>
-            </ul> */}
-            {/* <ul className='achievements'>
-                {
-                    achievements.map((achievement) => {
-                        <li key={achievement}>{achievement}</li>
-                    })
-                }
-            </ul> */}
-            {/* <Achievements>
-                <ListItem/>
-            </Achievements> */}
-            <button onClick={() => onDelete(id)}>-</button>
+            <div className="list-container">
+                <Achievements
+                    placeholder={'Notable things you did there'}
+                    isDisabled={false}
+                />
+            </div>
+            <button onClick={() => onDelete(id)}>Remove section</button>
         </div>
     )
 }
