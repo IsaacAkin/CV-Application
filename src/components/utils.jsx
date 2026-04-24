@@ -5,8 +5,8 @@ export function Input({ type, value, onChange, placeholder, isDisabled }) {
         <>
             {
                 isDisabled
-                ? <input type={type} name="" id="" value={value} onChange={onChange} placeholder={placeholder} disabled />
-                : <input type={type} name="" id="" value={value} onChange={onChange} placeholder={placeholder} />
+                ? <input type={type} value={value} onChange={onChange} placeholder={placeholder} disabled />
+                : <input type={type} value={value} onChange={onChange} placeholder={placeholder} />
             }
         </>
     )
@@ -46,8 +46,8 @@ export function Button({ onClick, disabled }) {
         <>
             {
                 disabled
-                ? <button onClick={onClick}>Enable</button>
-                : <button onClick={onClick}>Disable</button>
+                ? <button onClick={onClick}>Edit</button>
+                : <button onClick={onClick}>Submit</button>
             }
         </>
     )
@@ -67,7 +67,7 @@ function Item({ onChange, onClick, placeholder, isDisabled }) {
     )
 }
 
-function List({ list, onClick }) {
+function List({ list, onClick, isDisabled }) {
     return(
         <ul className='achievements'>
             {
@@ -75,7 +75,7 @@ function List({ list, onClick }) {
                     return(
                         <Fragment key={item.id}>
                             <li>{item.value}</li>
-                            <button onClick={() => onClick(item.id)}>remove</button>
+                            {!isDisabled && <button onClick={() => onClick(item.id)}>remove</button>}
                         </Fragment>
                     )
                 })
@@ -116,6 +116,7 @@ export function Achievements({ placeholder, isDisabled }) {
             <List
                 list={achievements}
                 onClick={removeAchievements}
+                isDisabled={isDisabled}
             />
         </>
     )

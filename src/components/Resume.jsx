@@ -10,17 +10,8 @@ export default function Resume() {
     const educationIndex = useRef(1);
     const experienceIndex = useRef(1);
 
-    // const [disabled, setDisabled] = useState(false);
     const [educationSection, setEducationSection] = useState([{ id: 1 }]);
     const [experienceSection, setExperienceSection] = useState([{ id: 1 }]);
-
-    // function handleDisabled() {
-    //     if (disabled) {
-    //         setDisabled(false);
-    //     } else {
-    //         setDisabled(true)
-    //     }
-    // }
 
     function addEducationSection() {
         educationIndex.current++;
@@ -49,17 +40,11 @@ export default function Resume() {
     return (
         <>
             <section className="general-info-section">
-                <GeneralInfo
-                    // isDisabled={disabled}
-                />
-                {/* <Button onClick={handleDisabled} disabled={disabled}/> */}
+                <GeneralInfo />
             </section>
             <section className="profile-section">
                 <h3>Profile</h3>
-                <Profile
-                    // isDisabled={disabled}
-                />
-                {/* <Button onClick={handleDisabled} disabled={disabled}/> */}
+                <Profile />
             </section>
             <section className="education-section">
                 <h3>Education</h3>
@@ -75,8 +60,7 @@ export default function Resume() {
                         )
                     })
                 }
-                <button onClick={addEducationSection}>+</button>
-                {/* <Button onClick={handleDisabled} disabled={disabled}/> */}
+                <button onClick={addEducationSection}>Add section</button>
             </section>
             <section className="experience-section">
                 <h3>Experience</h3>
@@ -92,8 +76,7 @@ export default function Resume() {
                         )
                     })
                 }
-                <button onClick={addExperienceSection}>+</button>
-                {/* <Button onClick={handleDisabled} disabled={disabled}/> */}
+                <button onClick={addExperienceSection}>Add section</button>
             </section>
         </>
     )
